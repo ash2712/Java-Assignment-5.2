@@ -1,0 +1,99 @@
+package myPack;
+import java.util.*;
+
+/*this program contains two classes, fixedStack and variableStack. FixedStack
+accepts a fixed number of objects and variableStack grows to accomodate any
+extra objects, if necessary. The program shows the usage of push() and pop()*/
+
+public class interfaceAssignment {
+	public static void main(String s[]){
+		
+		FixedStack fs = new FixedStack();
+		fs.push(6);
+		System.out.println(" ");
+		variableStack vs = new variableStack();
+		vs.push(90);
+		
+		
+	}
+}
+interface stack{
+	
+	void push(int i);
+	int pop();
+	
+}
+
+class FixedStack implements stack{
+
+	Stack<Integer> stack = new Stack<Integer>();
+	int size;
+	FixedStack(){//adding objects into stack
+		stack.push(4);
+		stack.push(8);
+		stack.push(1);
+		stack.push(2);
+		stack.push(3);
+		stack.push(9);
+		stack.push(10);
+		stack.push(1234);
+		
+		size = 5;//size = particular limit of the stack
+	}
+	
+	public void push(int i) {
+		// TODO Auto-generated method stub
+		if(i > size){
+			System.out.println("Stack overflow");
+			pop();/*if there is a stack overflow, then program automatically 
+			removes objects so that stack size is equal to 5*/
+		}else{
+			System.out.println(stack);
+		}
+	}
+
+	public int pop() {
+	while (stack.size() > size)
+		System.out.println("removed object is = " + stack.pop());/*stack.pop method removes objects from stack 
+	till stack size becomes 5*/
+		System.out.println("Stack left =  " + stack);
+		return stack.pop();
+	}	
+}
+
+class variableStack implements stack{
+	
+	Stack<Integer> stack = new Stack<Integer>();
+	int size;
+	variableStack(){
+		stack.push(4);
+		stack.push(8);
+		stack.push(1);
+		stack.push(2);
+		stack.push(3);
+		stack.push(9);
+		stack.push(10);
+		stack.push(12);
+		
+		
+		size = 5;
+	}
+
+	@Override
+	public void push(int i) {
+		// TODO Auto-generated method stub
+		if(i > size){
+			size =i;
+			System.out.println(stack);
+		}
+		else{
+			System.out.println(stack);
+		}
+	}
+
+	@Override
+	public int pop() {
+		// TODO Auto-generated method stub
+		return 0;
+	}	
+}
